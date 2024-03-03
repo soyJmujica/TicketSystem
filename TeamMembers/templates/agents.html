@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<table style="width: 100%;border-collapse: separate;">
+	<!-- Headers -->
+	<tr bgcolor="#00CDCD">
+		<th style="border: 1px solid #ccc; padding: 8px;">Agent's Name</th>
+		<th style="border: 1px solid #ccc; padding: 8px;">Phone Number</th>
+		<th style="border: 1px solid #ccc; padding: 8px;">Email</th>
+		<th style="border: 1px solid #ccc; padding: 8px;">Offers</th>
+		<th style="border: 1px solid #ccc; padding: 8px;">Addendums</th>
+		<th style="border: 1px solid #ccc; padding: 8px;">Listings</th>
+		<th style="border: 1px solid #ccc;padding: 8px;">MLS Sheet/Attachments</th>
+		<th style="border: 1px solid #ccc; padding: 8px;">MLS Search</th>
+		<th style="border: 1px solid #ccc; padding: 8px;">Dotloop</th>
+	</tr>
+	<!-- Table Data -->
+	{% for agent in agents %}
+	<tr>
+		<td style="border: 1px solid #ccc; padding: 8px;"><a href="{% url 'agent info' agent.id %}">{{agent.name}}</a></td>
+		<td style="border: 1px solid #ccc; padding: 8px;">{{agent.phone}}</td>
+		<td style="border: 1px solid #ccc; padding: 8px;">{{agent.email}}</td>
+		<td style="border: 1px solid #ccc; padding: 8px;">{{agent.offer}}</td>
+		<td style="border: 1px solid #ccc; padding: 8px;">{{agent.addendum}}</td>
+		<td style="border: 1px solid #ccc; padding: 8px;">{{agent.listing}}</td>
+		<td style="border: 1px solid #ccc; padding: 8px;">{{agent.mls_attachments}}</td>
+		<td style="border: 1px solid #ccc; padding: 8px;">{{agent.mls_search}}</td>
+		<td style="border: 1px solid #ccc; padding: 8px;">{{agent.dotloop}}</td>
+	</tr>
+	{% endfor %}
+	
+</table>
+
+{% endblock %}

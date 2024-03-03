@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="block">
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% endif %}">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+{% if user.is_authenticated %}
+<h1 style="display: flex; justify-content: center;">Welcome TC</h1>
+<p><h2 style="display: flex; justify-content: center;">Please start working</h2></p>
+			<div class="action-buttons" style="display: flex;padding: 5px;justify-content: center;align-items: center;">
+				<h1><a href="{% url 'log out' %}" class="btn btn-primary" role="button" title="Deals" style="flex: 1; margin-right: 10px;">Logout</a></h1>				
+			</div>
+{% else %}
+<h1 style="display: flex; justify-content: center;">Welcome TC</h1>
+<p><h2 style="display: flex; justify-content: center;">Please Log In or Sign Up in case you don't have</h2></p>
+			<div class="action-buttons" style="display: flex;padding: 5px;justify-content: center;align-items: center;">
+				<h1><a href="{% url 'ingreso' %}" class="btn btn-primary" role="button" title="Deals" style="flex: 1; margin-right: 10px;">Sign up/Log in</a></h1>				
+			</div>
+{% endif %}
+</div>
+{% endblock %}

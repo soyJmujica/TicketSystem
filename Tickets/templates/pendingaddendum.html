@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<table style="width: 100%;border-collapse: collapse;">
+	<tr bgcolor="#ADD8E6">
+		<th style="border: 1px solid #bbb;padding: 5px;">Addendum</th>
+		<th style="border: 1px solid #bbb;padding: 5px;">Address</th>
+		<th style="border: 1px solid #bbb;padding: 5px;">Agent</th>
+		<th style="border: 1px solid #bbb;padding: 5px;">Requested</th>
+	</tr>
+	{% for addendum in addendums %}
+	<tr>
+		<td style="border: 1px solid #bbb; padding: 8px;">
+			<a href="{% url 'addendum details' addendum.id %}">
+				{{addendum.addendum}}
+			</a>			
+		</td>
+		<td style="border: 1px solid #bbb;padding: 8px;">
+			{{addendum.address}}
+		</td>
+		<td style="border: 1px solid #bbb;padding: 8px;">
+			{{addendum.agent}}
+		</td>
+		<td style="border: 1px solid #BBB;padding: 8px;">
+			{{addendum.created}}			
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}

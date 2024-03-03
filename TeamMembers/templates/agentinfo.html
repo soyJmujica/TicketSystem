@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+	<article class="card">
+		<!--div class="background">
+			<img src="{{agent.picture.url}}" alt="profile">
+		</div-->
+		<div class="content">
+			<h1>{{agent.name}}</h1>
+			<p>Info:</p>
+			<ul class="chips">
+			<li class="chip">Email: {{agent.email}}</li>
+			<li class="chip">Phone number: {{agent.phone}}</li>	
+			</ul>
+			<div class="action-buttons" style="display: inline-flex;padding: 5px;">
+				<h1><a href="{% url 'requested by agent' agent.id %}" class="btn btn-info" role="button" title="Requested" style="flex: 1; margin-right: 10px;">All Request</a></h1>
+				<h1><a href="{% url 'pending requests' agent.id %}" class="btn btn-warning" role="button" title="Pending" style="flex: 1; margin-right: 10px;">Pending</a></h1>
+				<h1><a href="{% url 'completed requests' agent.id %}" class="btn btn-secondary" role="button" title="Completed" style="flex: 1; margin-right: 10px;">Completed</a></h1>
+
+			</div>
+
+		</div>
+	</article>
+</div>
+
+{% endblock %}

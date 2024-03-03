@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="details">
+<h1>Dotloop Request By {{dotloop.agent}}</h1>
+<ul>
+	<li>
+		<h3><b>Address:</b> {{dotloop.address}}</h3>
+	</li>
+	<li>
+		<h3><b>Inquiry:</b> {{dotloop.inquiry}}</h3>
+	</li>
+	<li>
+		<h3><b>Additional Info:</b><br> {{dotloop.additional}}</h3>
+	</li>
+</ul>
+{% if dotloop.completed %}
+<h2>Task completed by {{dotloop.completed_by}}</h2>
+<h2>Date completed: {{dotloop.completed}}</h2>
+{% else %}
+<div class="completed">
+	<form action="{% url 'dotloop completed' dotloop.id %}" method="POST">
+		{% csrf_token %}
+	<button class="btn btn-primary">
+		Completed
+	</button>
+	</form>
+
+</div>
+{% endif %}
+</div>
+{% endblock %}

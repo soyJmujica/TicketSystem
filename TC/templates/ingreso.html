@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="icon" href="{% static 'img/Aguila.ico' %}">
+	<title>Sign Up | Sign in</title>
+</head>
+<body>
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% endif %}">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+	<div class="container" id="container">
+		<div class="form-container sign-up">
+			<form action="{% url 'sign up' %}" method="POST">
+				<h1>Create Account</h1>
+				
+				<div class="social-icons">
+					<a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+					<a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
+					<a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a>
+					<a href="#" class="icon"><i class="fa-brands fa-linkedin"></i></a>
+				</div>
+				<span>Or use your email for registration</span>
+					{% csrf_token %}
+  					<div class="form-group">
+    					{% for field in signup %}
+      					{{ field.label_tag }}<br>
+      					{{ field }}<br>
+    					{% endfor %}
+  					</div>
+				<button>Sign Up</button>
+			</form>
+		</div>
+		<div class="form-container log-in">
+			<form action="{% url 'login' %}" method="POST">
+				<h1>Log In</h1>
+				
+				<div class="social-icons">
+					<a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+					<a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
+					<a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a>
+					<a href="#" class="icon"><i class="fa-brands fa-linkedin"></i></a>
+				</div>
+				<span>Or use your User & Password</span>
+				{% csrf_token %}
+				{{login.as_table}}
+				<a href="#">Forget Your Password?</a>
+				<button>Log In</button>
+			</form>
+		</div>
+		<div class="toggle-container">
+			<div class="toggle">
+				<div class="toggle-panel toggle-left">
+					<h1>Welcome</h1>
+					<p>Are you already registered? Click here and login</p>
+					<button class="hidden" id="login">Log In</button>
+				</div>
+				<div class="toggle-panel toggle-right">
+					<h1>Hello, are you new here?</h1>
+					<p>Register your info to fully use the site</p>
+					<button class="hidden" id="register">Sign Up</button>
+				</div>				
+			</div>
+		</div>
+	</div>
+	<script src="{% static 'js/script.js' %}"></script>
+
+</div>
+
+	</body>
+</html>

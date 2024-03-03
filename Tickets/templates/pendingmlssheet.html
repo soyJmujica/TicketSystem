@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<table style="width: 100%;border-collapse: collapse;">
+	<tr bgcolor="#ADD8E6">
+		<th style="border: 1px solid #bbb;padding: 5px;">Address</th>
+		<th style="border: 1px solid #bbb;padding: 5px;">Agent</th>
+		<th style="border: 1px solid #bbb;padding: 5px;">Requested</th>
+	</tr>
+	{% for mlssheet in mlssheets %}
+	<tr>
+		<td style="border: 1px solid #bbb; padding: 8px;">
+			<a href="{% url 'mlssheet details' mlssheet.id %}">
+				{{mlssheet.address}}
+			</a>			
+		</td>
+		<td style="border: 1px solid #bbb;padding: 8px;">
+			{{mlssheet.agent}}
+		</td>
+		<td style="border: 1px solid #BBB;padding: 8px;">
+			{{mlssheet.created}}
+		</td>
+
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}

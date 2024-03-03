@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>MLS Search Requested By {{mlssearch.agent}}</h1>
+<div class="details">
+<ul>
+	<li>
+		<h3><b>Lead's Name:</b> {{mlssearch.full_name}}</h3>
+	</li>
+	<li>
+		<h3><b>Email Address:</b> {{mlssearch.email}}</h3>
+	</li>
+
+	<li>
+		<h3><b>Search Info:</b> {{mlssearch.search}}</h3>
+	</li>
+</ul>
+<br>
+<br>
+{% if mlssearch.completed %}
+<h2>Task completed by {{mlssearch.completed_by}}</h2>
+<h2>Date completed: {{mlssearch.completed}}</h2>
+{% else %}
+<div class="completed">
+	<form action="{% url 'mlssearch completed' mlssearch.id %}" method="POST">
+		{% csrf_token %}
+	<button class="btn btn-primary">
+		Completed
+	</button>
+	</form>
+
+</div>
+{% endif %}
+</div>
+{% endblock %}

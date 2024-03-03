@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<table style="width: 100%;border-collapse: collapse;">
+	<tr bgcolor="#ADD8E6">
+		<th style="border: 1px solid #bbb;padding: 5px;">Request</th>
+		<th style="border: 1px solid #bbb;padding: 5px;">Address / Client</th>
+		<th style="border: 1px solid #bbb;padding: 5px;">Request Time</th>
+		<th style="border: 1px solid #bbb;padding: 5px;">Status</th>
+	</tr>
+	
+		{% for offer in offers %}
+		<tr>
+		<td><a href="{% url 'offer details' offer.id %}">Offer</a></td>
+		<td>{{offer.address}}</td>
+		<td>{{offer.created}}</td>
+		<td>
+			{% if offer.completed %}
+			Completed {{offer.completed}}
+			{% else %}
+			Pending
+			{% endif %}
+		</td>
+		</tr>
+		{% endfor %}
+
+		{% for addendum in addendums %}
+		<tr>
+		<td><a href="{% url 'addendum details' addendum.id %}">Addendum</a></td>
+		<td>{{addendum.address}}</td>
+		<td>{{addendum.created}}</td>
+		<td>
+			{% if addendum.completed %}
+			Completed {{addendum.completed}}
+			{% else %}
+			Pending
+			{% endif %}
+		</td>
+		</tr>
+		{% endfor %}
+
+		{% for listing in listings %}
+		<tr>
+		<td><a href="{% url 'listing details' listing.id %}">Listing</a></td>
+		<td>{{listing.address}}</td>
+		<td>{{listing.created}}</td>
+		<td>
+			{% if listing.completed %}
+			Completed {{listing.completed}}
+			{% else %}
+			Pending
+			{% endif %}
+		</td>
+		</tr>
+		{% endfor %}
+
+		{% for mlssheet in mlssheets %}
+		<tr>
+		<td><a href="{% url 'mlssheet details' mlssheet.id %}">MLS Sheet / Attachements</a></td>
+		<td>{{mlssheet.address}}</td>
+		<td>{{mlssheet.created}}</td>
+		<td>
+			{% if mlssheet.completed %}
+			Completed {{mlssheet.completed}}
+			{% else %}
+			Pending
+			{% endif %}
+		</td>
+		</tr>
+		{% endfor %}
+
+		{% for mls_search in mls_searches %}
+		<tr>
+		<td><a href="{% url 'mlssearch details' mls_search.id %}">MLS Search</a></td>
+		<td>{{mls_search.full_name}}</td>
+		<td>{{mls_search.created}}</td>
+		<td>
+			{% if mls_search.completed %}
+			Completed {{mls_search.completed}}
+			{% else %}
+			Pending
+			{% endif %}
+		</td>
+		</tr>
+		{% endfor %}
+
+		{% for dotloop in dotloops %}
+		<tr>
+		<td><a href="{% url 'dotloop details' dotloop.id %}">Dotloop</a></td>
+		<td>{{dotloop.address}}</td>
+		<td>{{dotloop.created}}</td>
+		<td>
+			{% if dotloop.completed %}
+			Completed {{dotloop.cpmpleted}}
+			{% else %}
+			Pending
+			{% endif %}
+		</td>
+		</tr>
+		{% endfor %}
+
+</table>
+<br>
+<br>
+{% endblock %}

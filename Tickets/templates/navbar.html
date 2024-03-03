@@ -1,0 +1,46 @@
+{% load static %}
+<nav class="navbar navbar-expand"  style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="{% static 'img/aguila.png' %}" width="100px" alt="eagle">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}">Home</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'TC home' %}">TC Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'pending offers' %}">Offers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'pending addendums' %}">Addendums</a>
+        </li>
+        <li>
+          <a class="nav-link" href="{% url 'pending listings' %}">Listing</a>
+        </li>
+        <li>
+          <a class="nav-link" href="{% url 'pending mlssheet' %}">MLS Sheet / Attachments</a>
+        </li>
+        <li>
+          <a class="nav-link" href="{% url 'pending mlssearch' %}">MLS Search</a>
+        </li>
+        <li>
+          <a class="nav-link" href="{% url 'pending dotloop' %}">Dotloop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'add agent' %}">Add Agent</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'agents' %}">Agents</a>
+        </li>
+        {% endif %}
+      </ul>
+
+    </div>
+  </div>
+</nav>

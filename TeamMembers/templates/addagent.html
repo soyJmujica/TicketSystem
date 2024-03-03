@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+	form{
+		text-align: justify;
+		align-content: center;
+	}
+	#id_name, #id_phone, #id_email{
+		text-align: justify;
+		width: 350px;
+		align-content: center;
+	}
+</style>
+<br>
+<form action="{% url 'add agent' %}" method="POST">
+	{% csrf_token %}
+  <div class="form-group">
+    {% for field in form %}
+      {{ field.label_tag }}<br>
+      {{ field }}<br>
+    {% endfor %}
+  </div>
+  <button class="btn btn-primary">
+    submit
+  </button>
+</form>
+
+{% endblock %}

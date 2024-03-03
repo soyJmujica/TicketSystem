@@ -1,0 +1,82 @@
+*:hover{
+outline-color: blue;
+
+}
+body{
+  background-image:url('https://yt3.googleusercontent.com/WSwBQpgZ-93Mobr4KeA1Y9v4qjpHbxNfNuQ6kH4bukLgl4p-4IgpVFDB-Hf0eQV7XykQORkg=s900-c-k-c0x00ffffff-no-rj') ;
+  background-size: cover;
+  background-position: 20% 20%;
+}
+.form-field {
+  width: 400px;
+}
+.form-group, .form {
+  width: 500px;
+}
+
+.signup-container, .card, .card-body, .form, .form-group, .details, table {
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px; 
+    justify-content: center;}
+
+.signup-container, .form, .form-group, .details, .block, table {
+  background-color: rgba(255, 255, 255, 0.5); /* Color de fondo con opacidad */
+  backdrop-filter: blur(15px); /* Aplicar desenfoque */
+}
+
+.block {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 10px;
+  justify-content: center;
+}
+
+/* styles.css */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#close-button {
+    margin-top: 10px;
+}
+
+input, select, textarea, option{
+  background-color: #def;
+  border: 1px solid #000;
+  margin: 8px 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  outline: none
+}
+
+input, textarea{
+  width: 75%;
+}
+
+#credit_amount{
+  width: 60%;
+  display: flex;
+}
+
+#listing_price{
+  width: 40%;
+}

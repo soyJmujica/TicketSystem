@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<table style="width: 100%;border-collapse: collapse;">
+	<tr bgcolor="#ADD8E6">
+		<th style="border: 1px solid #bbb;padding: 5px;">Agent</th>
+		<th style="border: 1px solid #bbb;padding: 5px;">Lead's Name</th>
+		<th style="border: 1px solid #bbb;padding: 5px;">Requested</th>
+	</tr>
+	{% for mlssearch in mlssearches %}
+	<tr>
+		<td style="border: 1px solid #bbb; padding: 8px;">
+			<a href="{% url 'mlssearch details' mlssearch.id %}">
+				{{mlssearch.agent}}
+			</a>			
+		</td>
+		<td style="border: 1px solid #bbb;padding: 8px;">
+			{{mlssearch.full_name}}
+		</td>
+		<td style="border: 1px solid #BBB;padding: 8px;">
+			{{mlssearch.created}}
+		</td>
+
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock %}

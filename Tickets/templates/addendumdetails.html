@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="details">
+	<h1>{{addendum.address}}</h1>
+	<h2>{{addendum.addendum}}</h2>
+
+	{% if addendum.addendum == "Repair Addendum" %}
+	<ul><p>
+		<li><h3>Which items from the 4-point Inspection Report are to be added?</h3>
+		<p>{{addendum.four_points}}</p></li>
+		<li><h2>Credit Amount<br>
+		{{addendum.credit_amount}}</h2></li>
+		<li><h2>Email the inspection reports to admin@militaryvetteam and fischerclosing@gmail.com<br>
+		{% if addendum.inspection_report %}
+	     <figure><img src="{% static 'img/yes.png' %}" width="100px"></figure>
+
+	 	{% else %}
+		 <figure><img src="{% static 'img/no.png' %}" width="80px"></figure>
+		{% endif %}
+	</h2></li>
+		<li><h2>Additional Terms <br>
+		{{addendum.additional}}</h2></li>
+	</ul></p>
+	{% elif addendum.addendum == "Closing Date Addendum" %}
+	<ul>
+		<li><h2>New Closing Date<br>
+		{{addendum.new_closing}}</h2></li>
+		<li><h2>Additional Terms <br>
+		{{addendum.additional}}</h2></li>
+	</ul>
+	{% elif addendum.addendum == "Credit By Seller/Buyer Addendum" %}
+	<ul>
+		<li><h2>Buyer/Seller<br>
+		{{addendum.buyer_seller}}</h2></li>
+		<li><h2>Credit Amount<br>
+		{{addendum.credit_amount}}</h2></li>
+		<li><h2>Additional Terms <br>
+		{{addendum.additional}}</h2></li>
+	</ul>
+	{% elif addendum.addendum == "Add or Remove Signer" %}
+	<ul>
+		<li><h2>Add or Remove?<br>
+		{{addendum.add_remove}}</h2></li>
+		<li><h2>Buyer or Seller?<br>
+		{{addendum.buyer_seller}}</h2></li>
+		<li><h2>Legal Name<br>
+		{{addendum.full_name}}</h2></li>
+		<li><h2>Email Address <br>
+		{{addendum.email}}</h2></li>
+		<li><h2>Additional Terms <br>
+		{{addendum.additional}}</h2></li>
+	</ul>
+	{% elif addendum.addendum == "Other Addendum" %}
+	<ul>
+		<li><h2>Additional Terms <br>
+		{{addendum.additional}}</h2></li>
+	</ul>
+	{% elif addendum.addendum == "Release and Cancellation" %}
+	<ul>
+		<li><h3><b>Cancellation Reason:</b> {{addendum.cancellation_reason}}</h3></li>
+		{% if addendum.other %}
+		<li><h3><b>In case you select "other" please tell us the reason:</b> {{addendum.other}}</h3></li>
+		{% endif %}
+		<li><h3><b>Disbursement of Escrow Funds:</b> {{addendum.disbursement}}</h3></li>
+		<li><h3><b>Amount:</b> {{addendum.credit_amount}}</h3></li>
+		{% if addendum.buyer_seller %}
+		<li><h3><b>To:</b> {{addendum.buyer_seller}}</h3></li>
+		{% endif %}
+	</ul>
+	{% endif %}
+
+<br>
+<br>
+{% if addendum.completed %}
+<h2>Task completed by {{addendum.completed_by}}</h2>
+<h2>Date completed: {{addendum.completed}}</h2>
+{% else %}
+<div class="completed">
+	<form action="{% url 'addendum completed' addendum.id %}" method="POST">
+		{% csrf_token %}
+	<button class="btn btn-primary">
+		Completed
+	</button>
+	</form>
+
+</div>
+{% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+	{% load static %}
+{% block content %}
+<style>
+    #id_four_points {
+        height: 150px; /* Establece la altura del campo four_points */
+        width: 400px;
+    }
+    #id_additional, #id_full_name, #id_email{
+    	width: 400px;
+    }
+
+</style>
+
+<h1>Create Addendum</h1>
+<h2>
+	{{error}}
+</h2>
+<form action="{% url 'addendum' %}" method="POST">
+    {% csrf_token %}
+    <div class="form">
+    <label for="{{form.agent.id_for_label}}">{{form.agent.label}}</label><br>
+    {{form.agent}}<br>
+    <label for="{{form.address.id_for_label}}">{{form.address.label}}</label><br>
+    {{form.address}}<br>
+    <div >
+        <label for="{{ form.addendum.id_for_label }}">{{form.addendum.label}}</label><br>
+        {{ form.addendum }}<br>
+    </div>
+    <div class="form-field" id="four_points">
+        <label for="{{ form.four_points.id_for_label }}">{{form.four_points.label}}</label><br>
+        {{ form.four_points }}<br>
+    </div>
+    <div class="form-field" id="credit_amount">
+        <label for="{{form.credit_amount.id_for_label}}">Amount</label><br>
+        {{form.credit_amount}}
+    </div>
+    <div class="form-field" id="inspection_report">
+        <label for="{{form.inspection_report.id_for_label}}">{{form.inspection_report.label}}</label><br>
+        {{form.inspection_report}}<br>    	
+    </div>
+    <div class="form-field" id="new_closing">
+        <label for="{{ form.new_closing.id_for_label }}">New Closing</label><br>
+        {{ form.new_closing }}<br>    	
+    </div>
+    <div class="form-field" id="add_remove">
+    	<label for="{{form.add_remove.id_for_label}}">{{form.add_remove.label}}</label><br>
+    	{{form.add_remove}}<br>
+    </div>
+    <div class="form-field" id="buyer_seller">
+    	<label for="{{form.buyer_seller.id_for_label}}">{{form.buyer_seller.label}}</label><br>
+    	{{form.buyer_seller}}<br>
+    </div>
+    <div class="form-field" id="full_name">
+    	<label for="{{form.full_name.id_for_label}}">{{form.full_name.label}}</label><br>
+    	{{form.full_name}}<br>
+    </div>
+    <div class="form-field" id="email">
+    	<label for="{{form.email.id_for_label}}">{{form.email.label}}</label><br>
+    	{{form.email}}<br>
+    </div>
+    <div class="form-field" id="additional">
+    	<label for="{{form.additional.id_for_label}}">{{ form.additional.label }}</label><br>
+        {{form.additional}}
+    </div>
+    <div class="form-field" id="cancellation_reason" class="form-group">
+    	<label for="{{form.cancellation_reason.id_for_label}}">{{form.cancellation_reason.label}}</label><br>
+    	{{form.cancellation_reason}}
+    </div>
+    <div class="form-field" id="other" class="form-group">
+    	<label for="{{form.other.id_for_label}}">{{form.other.label}}</label><br>
+    	{{form.other}}
+    </div>
+    <div class="form-field" id="disbursement" class="form-group">
+    	<label for="{{form.disbursement.id_for_label}}">{{form.disbursement.label}}</label><br>
+    	{{form.disbursement}}
+    </div>
+    </div>
+<br>
+    <button class="btn btn-primary">Submit</button>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var addendumField = document.getElementById('id_addendum');
+        var four_points = document.getElementById('four_points');
+        var credit_amount = document.getElementById('credit_amount');
+        var inspection_report = document.getElementById('inspection_report');
+        var new_closing = document.getElementById('new_closing');
+        var add_remove = document.getElementById('add_remove');
+        var buyer_seller = document.getElementById('buyer_seller');
+        var	full_name = document.getElementById('full_name');
+        var email = document.getElementById('email');
+        var additional = document.getElementById('additional');
+        var cancellation_reason = document.getElementById('cancellation_reason');
+        var other = document.getElementById('other');
+        var disbursement = document.getElementById('disbursement')
+        // Ocultar campos al cargar la página
+		four_points.style.display = 'none';
+		credit_amount.style.display = 'none';
+		inspection_report.style.display = 'none';
+		new_closing.style.display = 'none';
+		add_remove.style.display = 'none';
+		buyer_seller.style.display = 'none';
+		full_name.style.display = 'none';
+		email.style.display = 'none';
+		additional.style.display = 'none';
+		cancellation_reason.style.display = 'none';
+		other.style.display = 'none';
+		disbursement.style.display = 'none';
+
+        // Mostrar u ocultar campos según la selección del campo "addendum"
+        addendumField.addEventListener('change', function() {
+            if (addendumField.value === 'Repair Addendum') {
+                four_points.style.display = 'block';
+				credit_amount.style.display = 'inline';
+				inspection_report.style.display = 'block';
+				new_closing.style.display = 'none';
+				add_remove.style.display = 'none';
+				buyer_seller.style.display = 'none';
+				full_name.style.display = 'none';
+				email.style.display = 'none';
+				additional.style.display = 'block';
+				cancellation_reason.style.display = 'none';
+				other.style.display = 'none';	
+				disbursement.style.display = 'none';			
+				four_points.parentNode.insertBefore(four_points,credit_amount)
+				credit_amount.parentNode.insertBefore(email, credit_amount)
+            } else if (addendumField.value === 'Closing Date Addendum') {
+                four_points.style.display = 'none';
+				credit_amount.style.display = 'none';
+				inspection_report.style.display ='none'; 
+				new_closing.style.display = 'block';
+				add_remove.style.display = 'none';
+				buyer_seller.style.display = 'none';
+				full_name.style.display = 'none';
+				email.style.display = 'none';
+				additional.style.display = 'block';
+				cancellation_reason.style.display = 'none';
+				other.style.display = 'none';
+				disbursement.style.display = 'none';
+				new_closing.parentNode.insertBefore(new_closing, additional)
+            } else if (addendumField.value==='Credit By Seller/Buyer Addendum') {
+                four_points.style.display = 'none';
+				credit_amount.style.display = 'inline';
+				inspection_report.style.display = 'none';
+				new_closing.style.display = 'none';
+				add_remove.style.display = 'none';
+				buyer_seller.style.display = 'block';
+				full_name.style.display = 'none';
+				email.style.display = 'none';
+				additional.style.display = 'block';
+				cancellation_reason.style.display = 'none';
+				other.style.display = 'none';
+				
+				buyer_seller.parentNode.insertBefore(buyer_seller, credit_amount);
+				credit_amount.parentNode.insertBefore(credit_amount, additional);
+            } else if (addendumField.value === 'Add or Remove Signer') {
+				four_points.style.display = 'none';
+				credit_amount.style.display = 'none';
+				inspection_report.style.display = 'none';
+				new_closing.style.display = 'none';
+				add_remove.style.display = 'block';
+				buyer_seller.style.display = 'block';
+				full_name.style.display = 'block';
+				email.style.display = 'block';
+				additional.style.display = 'block';
+				cancellation_reason.style.display = 'none';
+				other.style.display = 'none';
+				disbursement.style.display = 'none';
+				add_remove.parentNode.insertBefore(add_remove,buyer_seller);
+				buyer_seller.parentNode.insertBefore(buyer_seller,full_name);
+				full_name.parentNode.insertBefore(full_name,email);
+				email.parentNode.insertBefore(email, additional);
+            }else if(addendumField.value === 'Other Addendum') {
+    			four_points.style.display = 'none';
+				credit_amount.style.display = 'none';
+				inspection_report.style.display = 'none';
+				new_closing.style.display = 'none';
+				add_remove.style.display = 'none';
+				buyer_seller.style.display = 'none';
+				full_name.style.display = 'none'; 
+				email.style.display = 'none';
+				additional.style.display = 'block'; 
+				cancellation_reason.style.display = 'none';
+				other.style.display = 'none';
+				disbursement.style.display = 'none';		          	
+            }else if(addendumField.value === 'Release and Cancellation') {
+            	four_points.style.display = 'none';
+				credit_amount.style.display = 'inline';
+				inspection_report.style.display = 'none';
+				new_closing.style.display = 'none';
+				add_remove.style.display = 'none';
+				buyer_seller.style.display = 'block';
+				full_name.style.display = 'none'; 
+				email.style.display = 'none';
+				additional.style.display = 'block'; 
+				cancellation_reason.style.display = 'block';
+				other.style.display = 'block';
+				disbursement.style.display = 'block';
+				buyer_seller.parentNode.insertBefore(buyer_seller, additional);
+				credit_amount.parentNode.insertBefore(credit_amount,buyer_seller);
+				disbursement.parentNode.insertBefore(disbursement,credit_amount);
+				other.parentNode.insertBefore(other, disbursement);
+				cancellation_reason.parentNode.insertBefore(cancellation_reason, other);
+
+            }else{
+				four_points.style.display = 'none';
+				credit_amount.style.display = 'none';
+				inspection_report.style.display = 'none';
+				new_closing.style.display = 'none';
+				add_remove.style.display = 'none';
+				buyer_seller.style.display = 'none';
+				full_name.style.display = 'none';
+				email.style.display = 'none';
+				additional.style.display = 'none';
+				cancellation_reason.style.display = 'none';
+				other.style.display = 'none';
+				disbursement.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+
+{% endblock %}

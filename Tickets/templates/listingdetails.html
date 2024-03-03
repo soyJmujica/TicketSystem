@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="details">
+<h1>{{listing.address}}</h1>
+
+<h2>{{listing.option}}</h2>
+
+{% if listing.option == "Listing Agreement" %}
+
+<ul>
+	<li>
+		<h3><b>Seller's Legal Name:</b> {{listing.seller_name}}</h3>
+	</li>
+	<li>
+		<h3><b>Seller's Email:</b> {{listing.seller_email}}</h3>
+	</li>
+	<li>
+		<h3><b>Listing Date:</b> {{listing.listing_date}}</h3>
+	</li>
+	<li>
+		<h3><b>Listing Expiration Date:</b> {{listing.listing_expiration}}</h3>
+	</li>
+
+
+	<li>
+		<h3><b>Listing Price:</b> {{listing.listing_price}}</h3>
+	</li>
+	<li>
+		<h3><b>Ocupancy:</b> {{listing.ocupancy}}</h3>
+	</li>
+	<li>
+		<h3><b>Appliances included:</b> {{listing.apliances}}</h3>
+	</li>
+	<li>
+		<h3><b>Listing Agent Commission:</b> {{listing.listing_commission}}</h3>
+	</li>
+	<li>
+		<h3><b>Commission if represnting both sides:</b> {{listing.bothsides_commission}}</h3>
+	</li>
+	<li>
+		<h3><b>MLS Fee:</b> {{listing.mls_fee}}</h3>
+	</li>
+	<li>
+		<h3><b>Cancellation Fee:</b> {{listing.cancellation_fee}}</h3>
+	</li>
+	<li>
+		<h3><b>Broker Fee:</b> {{listing.broker_fee}}</h3>
+	</li>
+	<li>
+		<h3><b>Lockbox Use?</b> {% if listing.lockbox %} <img src="{% static 'img/yes.png' %}" width="5%">
+			{% else %} <img src="{% static 'img/no.png' %}" width="4.5%">{% endif %}</h3>
+	</li>
+
+</ul>
+{% elif listing.option == "ShowingTime+ Photoshoot" %}
+<ul>
+	<li>
+		<h3><b>Photoshot Date and Time</b> {{listing.photoshoot}}</h3>
+	</li>
+	<li>
+		<h3><b>Person in charge during the photoshoot:</b> {{listing.person}}</h3>
+	</li>
+	<li>
+		<h3><b>Contact info of the Person in charge:</b> {{listing.contact_info}}</h3>
+	</li>
+</ul>
+
+{% elif listing.option == "Highnote/CMA" %}
+<ul>
+	<li>
+		<h3><b>Request:</b> {{listing.highnote}}</h3>
+	</li>
+	<li>
+		<h3><b>Seller's Legal Name:</b> {{listing.seller_name}}</h3>
+	</li>	
+</ul>
+{% endif %}
+<br>
+<br>
+{% if listing.completed %}
+<h2>Task completed by {{listing.completed_by}}</h2>
+<h2>Date completed: {{listing.completed}}</h2>
+{% else %}
+<div class="completed">
+	<form action="{% url 'listing completed' listing.id %}" method="POST">
+		{% csrf_token %}
+	<button class="btn btn-primary">
+		Completed
+	</button>
+	</form>
+
+</div>
+{% endif %}
+</div>
+
+{% endblock %}

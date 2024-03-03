@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+  {% load static %}
+{% block content %}
+<!--style>
+  /* Establecer el ancho de los campos del formulario a 200px */
+  input[type="text"], textarea, select {
+    width: 500px;
+  }
+</style-->
+<h1>Add here the info for your Listing</h1>
+<form action="{% url 'listing' %}" method="POST">
+	{% csrf_token %}
+  <div class="form">
+      <label for="{{form.agent.id_for_label}}"> {{form.agent.label}}</label><br>
+      {{form.agent}}<br>
+      <label for="{{form.address.id_for_label}}">{{form.address.label}}</label><br>
+      {{form.address}}<br>
+      <label for="{{form.option.id_for_label}}">Select</label><br>
+      {{form.option}}<br>
+
+    <div id="highnote" class="form-field">
+      <label for="{{form.highnote.id_for_label}}">{{form.highnote.label}}</label><br>
+      {{form.highnote}}
+    </div>
+    <div id="seller_name" class="form-field">
+      <label for="{{form.seller_name.id_for_label}}">{{form.seller_name.label}}</label><br>
+      {{form.seller_name}}
+    </div>
+    <div id="seller_email" class="form-field">
+      <label for="{{form.seller_email.id_for_label}}">{{form.seller_email.label}}</label><br>
+      {{form.seller_email}}
+    </div>
+    <div id="listing_date" class="form-field">
+      <label for="{{form.listing_date.id_for_label}}">{{form.listing_date.label}}</label><br>
+      {{form.listing_date}}
+    </div>
+    <div id="listing_expiration" class="form-field">
+      <label for="{{form.listing_expiration.id_for_label}}">{{form.listing_expiration.label}}</label><br>
+      {{form.listing_expiration}}
+    </div>
+    <div id="photoshoot" class="form-field">
+      <label for="{{form.photoshoot.id_for_label}}">{{form.photoshoot.label}}</label><br>
+      {{form.photoshoot}}
+    </div>
+    <div id="person" class="form-field">
+      <label for="{{form.person.id_for_label}}">{{form.person.label}}</label><br>
+      {{form.person}}
+    </div>
+    <div id="contact_info" class="form-field">
+      <label for="{{form.contact_info.id_for_label}}">{{form.contact_info.label}}</label><br>
+      {{form.contact_info}}
+    </div>
+    <div id="listing_price" class="form-field">
+      <label for="{{form.listing_price.id_for_label}}">{{form.listing_price.label}}</label><br>
+      {{form.listing_price}}
+    </div>
+    <div id="ocupancy" class="form-field">
+      <label for="{{form.ocupancy.id_for_label}}">{{form.ocupancy.label}}</label><br>
+      {{form.ocupancy}}
+    </div>
+    <div id="appliances" class="form-field">
+      <label for="{{form.appliances.id_for_label}}">{{form.appliances.label}}</label><br>
+      {{form.appliances}}
+    </div>
+    <div id="lockbox" class="form-field">
+      <label for="{{form.lockbox.id_for_label}}">{{form.lockbox.label}}</label><br>
+      {{form.lockbox}}
+    </div>
+    <div id="listing_commission" class="form-field">
+      <label for="{{form.listing_commission.id_for_label}}">{{form.listing_commission.label}}</label><br>
+      {{form.listing_commission}}
+    </div>
+    <div id="bothsides_commission" class="form-field">
+      <label for="{{form.bothsides_commission.id_for_label}}">{{form.bothsides_commission.label}}</label><br>
+      {{form.bothsides_commission}}
+    </div>
+    <div id="otheragent_commission" class="form-field">
+      <label for="{{form.otheragent_commission.id_for_label}}">{{form.otheragent_commission.label}}</label><br>
+      {{form.otheragent_commission}}
+    </div>
+    <div id="mls_fee" class="form-field">
+      <label for="{{form.mls_fee.id_for_label}}">{{form.mls_fee.label}}</label><br>
+      {{form.mls_fee}}
+    </div>
+    <div id="cancellation_fee" class="form-field">
+      <label for="{{form.cancellation_fee.id_for_label}}">{{form.cancellation_fee.label}}</label><br>
+      {{form.cancellation_fee}}
+    </div>
+    <div id="broker_fee" class="form-field">
+      <label for="{{form.broker_fee.id_for_label}}">{{form.broker_fee.label}}</label><br>
+      {{form.broker_fee}}
+    </div>
+  </div>
+<br>
+<br>
+  <button class="btn btn-primary">
+    submit
+  </button>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var option = document.getElementById('id_option');
+      var highnote = document.getElementById('highnote');
+      var seller_name = document.getElementById('seller_name');
+      var seller_email = document.getElementById('seller_email'); 
+      var listing_date = document.getElementById('listing_date');
+      var listing_expiration = document.getElementById('listing_expiration');
+      var photoshoot = document.getElementById('photoshoot');
+      var person = document.getElementById('person');
+      var contact_info = document.getElementById('contact_info');
+      var listing_price = document.getElementById('listing_price');
+      var ocupancy = document.getElementById('ocupancy');
+      var appliances = document.getElementById('appliances');
+      var lockbox = document.getElementById('lockbox');
+      var listing_commission = document.getElementById('listing_commission');
+      var bothsides_commission = document.getElementById('bothsides_commission');
+      var otheragent_commission = document.getElementById('otheragent_commission');
+      var mls_fee = document.getElementById('mls_fee');
+      var cancellation_fee = document.getElementById('cancellation_fee');
+      var broker_fee = document.getElementById('broker_fee');
+      // ocultar campos al cargar la pagina
+      highnote.style.display = 'none';
+      seller_name.style.display = 'none';
+      seller_email.style.display = 'none';
+      listing_date.style.display = 'none';
+      listing_expiration.style.display = 'none';
+      photoshoot.style.display = 'none';
+      person.style.display = 'none';
+      contact_info.style.display = 'none';
+      listing_price.style.display = 'none';
+      ocupancy.style.display = 'none';
+      appliances.style.display = 'none';
+      lockbox.style.display = 'none';
+      listing_commission.style.display = 'none';
+      bothsides_commission.style.display = 'none';
+      otheragent_commission.style.display = 'none';
+      mls_fee.style.display = 'none';
+      cancellation_fee.style.display = 'none';
+      broker_fee.style.display = 'none';
+      // Mostrar u ocultar campos segin la seleccion del campo "Option"
+      option.addEventListener('change',function() {
+        if (option.value === "Listing Agreement") {
+          highnote.style.display = 'none';
+          seller_name.style.display = 'block';
+          seller_email.style.display = 'block';
+          listing_date.style.display = 'block';
+          listing_expiration.style.display = 'block';
+          photoshoot.style.display = 'none';
+          person.style.display = 'none';
+          contact_info.style.display = 'none';
+          listing_price.style.display = 'inline';
+          ocupancy.style.display = 'block';
+          appliances.style.display = 'inline';
+          lockbox.style.display = 'block';
+          listing_commission.style.display = 'block';
+          bothsides_commission.style.display = 'block';
+          otheragent_commission.style.display = 'block';
+          mls_fee.style.display = 'inline';
+          cancellation_fee.style.display = 'inline';
+          broker_fee.style.display = 'inline';          
+        } else if (option.value === "ShowingTime+ Photoshoot") {
+          highnote.style.display = 'none';
+          seller_name.style.display = 'none';
+          seller_email.style.display = 'none';
+          listing_date.style.display = 'none';
+          listing_expiration.style.display = 'none';
+          photoshoot.style.display = 'block';
+          person.style.display = 'block';
+          contact_info.style.display = 'block';
+          listing_price.style.display = 'none';
+          ocupancy.style.display = 'none';
+          appliances.style.display = 'none';
+          lockbox.style.display = 'none';
+          listing_commission.style.display = 'none';
+          bothsides_commission.style.display = 'none';
+          mls_fee.style.display = 'none';
+          otheragent_commission.style.display = 'none';
+          cancellation_fee.style.display = 'none';
+          broker_fee.style.display = 'none';        
+        } else if (option.value === "Highnote/CMA")     {
+            highnote.style.display = 'block';
+            seller_name.style.display = 'block';
+            seller_email.style.display = 'none';
+            listing_date.style.display = 'none';
+            listing_expiration.style.display = 'none';
+            photoshoot.style.display = 'none';
+            person.style.display = 'none';
+            contact_info.style.display = 'none';
+            listing_price.style.display = 'none';
+            ocupancy.style.display = 'none';
+            appliances.style.display = 'none';
+            lockbox.style.display = 'none';
+            listing_commission.style.display = 'none';
+            bothsides_commission.style.display = 'none';
+            mls_fee.style.display = 'none';
+            otheragent_commission.style.display = 'none';
+            cancellation_fee.style.display = 'none';
+            broker_fee.style.display = 'none';          
+        } else {
+            highnote.style.display = 'none';
+            seller_name.style.display = 'none';
+            seller_email.style.display = 'none';
+            listing_date.style.display = 'none';
+            listing_expiration.style.display = 'none';
+            photoshoot.style.display = 'none';
+            person.style.display = 'none';
+            contact_info.style.display = 'none';
+            listing_price.style.display = 'none';
+            ocupancy.style.display = 'none';
+            appliances.style.display = 'none';
+            lockbox.style.display = 'none';
+            listing_commission.style.display = 'none';
+            bothsides_commission.style.display = 'none';
+            mls_fee.style.display = 'none';
+            otheragent_commission.style.display = 'none';
+            cancellation_fee.style.display = 'none';
+            broker_fee.style.display = 'none';
+        }
+      });
+    });
+</script>
+{% endblock %}

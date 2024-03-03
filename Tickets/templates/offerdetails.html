@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>Offer info of {{offer.address}}</h1>
+<div class="details">
+	<ul>
+		<li>
+			<h3><b>Agent:</b> {{offer.agent}}</h3>
+		</li>
+		<li>
+			<h3><b>Buyer's name:</b> {{offer.buyer_name}}</h3>
+		</li>
+		<li>
+			<h3><b>Buyer's Email:</b> {{offer.buyer_email}}</h3>
+		</li>
+		<li>
+			<h3><b>Offer Amount:</b> {{offer.offer_amount}}</h3>
+		</li>
+		<li>
+			<h3><b>Escrow Amount:</b> {{offer.escrow_amount}}</h3>
+		</li>
+		<li>
+			<h3><b>Financing:</b> {{offer.financing}}</h3>
+		</li>
+		<li>
+			<h3><b>Period of the Loan approval:</b> {{offer.loan_time}} Days</h3>
+		</li>
+		<li>
+			<h3><b>Closing Date:</b> {{offer.closing}}</h3>
+		</li>
+		<li>
+			<h3><b>Inspection Time: </b> {{offer.inspection_time}} Days</h3>
+		</li>
+		<li>
+			<h3><b>Email the proof of funds or Pre-approval to admin@militaryvetteam and fischerclosing@gmail.com:</b>  
+			 {% if offer.proof %}
+			<figure><img src="{% static 'img/yes.png' %}" width="5%"></figure>
+		     {% else %}
+		     <figure><img src="{% static 'img/no.png' %}" width="4.5%"></figure>
+		     {% endif %}
+		</h3>
+		</li>
+	</ul>
+	<br>
+<br>
+{% if offer.completed %}
+<h2>Task completed by {{offer.completed_by}}</h2>
+<h2>Date completed: {{offer.completed}}</h2>
+{% else %}
+<div class="completed">
+	<form action="{% url 'offer completed' offer.id %}" method="POST">
+		{% csrf_token %}
+	<button class="btn btn-primary">
+		Completed
+	</button>
+	</form>
+
+</div>
+{% endif %}
+</div>
+{% endblock %}

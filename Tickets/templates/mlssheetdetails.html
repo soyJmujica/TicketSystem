@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h1>MLS Sheet / Attachment for {{mlssheet.address}}</h1>
+<div class="details">
+<ul>
+	<li>
+		<h3><b>Agent:</b> {{mlssheet.agent}}</h3>
+	</li>
+	<li>
+		<h3><b>Lead's Name:</b> {{mlssheet.full_name}}</h3>
+	</li>
+	<li>
+		<h3><b>Email Address:</b> {{mlssheet.email}}</h3>
+	</li>
+	<li>
+		<h3><b>Attachment:</b> {{mlssheet.attachment}}</h3>
+	</li>
+	<li>
+		<h3><b>Additional Info:</b> {{mlssheet.additional}}</h3>
+	</li>
+</ul>
+<br>
+<br>
+{% if mlssheet.completed %}
+<h2>Task completed by {{mlssheet.completed_by}}</h2>
+<h2>Date completed: {{mlssheet.completed}}</h2>
+{% else %}
+<div class="completed">
+	<form action="{% url 'mlssheet completed' mlssheet.id %}" method="POST">
+		{% csrf_token %}
+	<button class="btn btn-primary">
+		Completed
+	</button>
+	</form>
+
+</div>
+{% endif %}
+</div>
+{% endblock %}

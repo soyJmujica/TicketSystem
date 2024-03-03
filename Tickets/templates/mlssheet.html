@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+  {% load static %}
+ {% block content %}
+
+<h1>Add here the info for your request</h1>
+<form action="{% url 'mlssheet' %}" method="POST">
+	{% csrf_token %}
+	  <div class="form-group">
+    {% for field in form %}
+      {{ field.label_tag }}<br>
+      {{ field }}<br>
+    {% endfor %}
+  </div>
+  <button class="btn btn-primary">
+    submit
+  </button>
+</form>
+
+ {% endblock %}
