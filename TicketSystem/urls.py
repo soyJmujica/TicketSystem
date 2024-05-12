@@ -17,9 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+from Tickets.views import home
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path("", home, name = "app home"),
     path("admin/", admin.site.urls),
     path('ticket/', include('Tickets.urls')),
     path('TC/', include('TC.urls')),
