@@ -98,8 +98,7 @@ def completedlisting(request, listing_id):
 		listing.completed_by = request.user
 		listing.save()
 		return redirect('listing details', listing_id=listing.id)
-	return render(request, 'pendinglisting.html', {'listings':listings,
-		"encabezado":"Listings Pending to be Done"})
+	return render(request, 'pendinglisting.html', {'listings':listings,"encabezado":"Listings Pending to be Done"})
 
 def mlssheet(request):
 	if request.method == 'POST':

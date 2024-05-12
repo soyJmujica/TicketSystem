@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-path('home/', views.home, name = 'home'),
+path('', views.home, name = 'home'),
 path('addendum/',views.addendum, name = "addendum"),
 path('addendum/pending/', views.pendingaddendum, name = 'pending addendums'),
 path('addendum/pending/<int:addendum_id>/', views.detailaddendum, name = 'addendum details'),
