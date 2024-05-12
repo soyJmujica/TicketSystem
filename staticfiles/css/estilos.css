@@ -3,7 +3,7 @@ outline-color: blue;
 
 }
 body{
-  background-image:url('https://yt3.googleusercontent.com/WSwBQpgZ-93Mobr4KeA1Y9v4qjpHbxNfNuQ6kH4bukLgl4p-4IgpVFDB-Hf0eQV7XykQORkg=s900-c-k-c0x00ffffff-no-rj') ;
+  background-image:url('../img/fondo1.png') ;
   background-size: cover;
   background-position: 20% 20%;
 }
