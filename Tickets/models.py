@@ -40,7 +40,7 @@ class CreateAddendum(models.Model):
 	four_points = models.TextField(blank = True, null=True, verbose_name = "Which items from the 4-point Inspection Report are to be added?")
 	credit_amount = MoneyField(max_digits = 10, decimal_places = 2,currency_choices = [("USD","US Dollar"),],
 		blank = True, null=True,verbose_name='Credit Amount')
-	inspection_report = models.CharField(max_length = 3, choices = [("Yes","Yes"),("No","No")],blank = True,null=True, verbose_name = "Email the inspection reports to admin@militaryvetteam and fischerclosing@gmail.com")
+	inspection_report = models.CharField(max_length = 3, choices = [("Yes","Yes"),("No","No")],blank = True,null=True, verbose_name = "Email the inspection reports to admin@demoemail.com")
 	new_closing = models.DateField(blank = True, null=True,verbose_name='Closing Date')
 	add_remove = models.CharField(max_length = 20, choices = [("Add", "Add"), ("Remove", "Remove")],blank = True, null=True,verbose_name = "Add/Remove")
 	buyer_seller = models.CharField(max_length = 20, choices = [("Buyer","Buyer"),("Seller","Seller")], blank = True, null=True,verbose_name = "Buyer/Seller")
