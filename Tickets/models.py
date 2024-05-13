@@ -20,7 +20,7 @@ class CreateOffer(models.Model):
 	loan_time = models.IntegerField(blank = True, null=True,verbose_name='Period for the loan approval')
 	closing = models.DateField(blank = True, null=True,verbose_name='Closing Date')
 	inspection_time = models.IntegerField(blank = True, null=True,verbose_name='Inspection Time')
-	proof = models.BooleanField(verbose_name = "Email the proof of funds or Pre-approval to admin@militaryvetteam and fischerclosing@gmail.com")
+	proof = models.BooleanField(verbose_name = "Email the proof of funds or Pre-approval to admin@demoemail.com")
 	created = models.DateTimeField(auto_now_add = True) 
 	completed = models.DateTimeField(null = True)
 	completed_by = models.ForeignKey(User, on_delete = models.DO_NOTHING, null = True)

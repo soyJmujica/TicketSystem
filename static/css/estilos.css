@@ -14,6 +14,11 @@ body{
   width: 500px;
 }
 
+.container h1{
+  color: #000;
+  text-shadow:1px 1px 1px #ccc;
+}
+
 .signup-container, .card, .card-body, .form, .form-group, .details, table {
     border: 1px solid #ccc;
     border-radius: 20px;
