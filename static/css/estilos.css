@@ -17,6 +17,8 @@ body{
 .container h1{
   color: #000;
   text-shadow:1px 1px 1px #ccc;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+  backdrop-filter: blur(5px)
 }
 
 .signup-container, .card, .card-body, .form, .form-group, .details, table {
