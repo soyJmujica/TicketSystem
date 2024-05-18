@@ -16,8 +16,9 @@ body{
 }
 
 .container h1{
-  color: #000;
+  color: #181818;
   text-stroke: 2px #ccc;
+  -webkit-text-stroke: 2px #ccc;
   backdrop-filter: blur(5px)
 }
 
