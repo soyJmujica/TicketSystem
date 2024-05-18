@@ -132,14 +132,7 @@ STATICFILES_FINDERS = [
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
 ]
 
-if not DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'EMAIL_HOST'
-    EMAIL_PORT = 'EMAIL_PORT'
-    EMAIL_HOST_USER = 'EMAIL_HOST_USER'
-    EMAIL_HOST_PASSWORD = 'EMAIL_HOST_PASSWORD'
-    EMAIL_USE_TLS = 'EMAIL_USE_TLS'
-    
+if not DEBUG:    
     SESSION_COOKIE_SECURE = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
