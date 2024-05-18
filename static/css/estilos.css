@@ -2,11 +2,11 @@
 outline-color: blue;
 
 }
-body{
-  background-image:url('../img/fondo1.png') ;
+body{  
   background-size: cover;
   background-position: 20% 20%;
   background-attachment: fixed;
+  background-image:url('../img/fondo1.png') ;
 }
 .form-field {
   width: 400px;
